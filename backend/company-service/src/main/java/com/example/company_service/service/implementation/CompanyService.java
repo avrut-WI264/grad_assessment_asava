@@ -19,7 +19,7 @@ public class CompanyService implements ICompanyService {
     public Company addCompany(Company company) {
 
         // Check if already exists
-        if (repo.existsByShortId(company.getShortID())) {
+        if (repo.existsByShortId(company.getShortId())) {
             throw new RuntimeException("Company with this shortID already exists");
         }
 

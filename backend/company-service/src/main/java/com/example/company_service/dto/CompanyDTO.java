@@ -2,7 +2,7 @@ package com.example.company_service.dto;
 
 public class CompanyDTO {
 
-    private String shortID;
+    private String shortId;
     private String name;
     private int noOfShare;
     private double price;
@@ -12,20 +12,20 @@ public class CompanyDTO {
     }
 
     // Parameterized Constructor
-    public CompanyDTO(String shortID, String name, int noOfShare, double price) {
-        this.shortID = shortID;
+    public CompanyDTO(String shortId, String name, int noOfShare, double price) {
+        this.shortId = shortId;
         this.name = name;
         this.noOfShare = noOfShare;
         this.price = price;
     }
 
     // Getters & Setters
-    public String getShortID() {
-        return shortID;
+    public String getShortId() {
+        return shortId;
     }
 
-    public void setShortID(String shortID) {
-        this.shortID = shortID;
+    public void setShortId(String shortId) {
+        this.shortId = shortId;
     }
 
     public String getName() {

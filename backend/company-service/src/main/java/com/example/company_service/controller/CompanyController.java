@@ -29,7 +29,7 @@ public class CompanyController {
     // 🔄 DTO → Entity
     private Company mapToEntity(CompanyDTO dto) {
         Company c = new Company();
-        c.setShortID(dto.getShortID());
+        c.setShortId(dto.getShortId());
         c.setName(dto.getName());
         c.setNoOfShare(dto.getNoOfShare());
         c.setPrice(dto.getPrice());
@@ -39,7 +39,7 @@ public class CompanyController {
     // 🔄 Entity → DTO
     private CompanyDTO mapToDTO(Company company) {
         return new CompanyDTO(
-                company.getShortID(),
+                company.getShortId(),
                 company.getName(),
                 company.getNoOfShare(),
                 company.getPrice()
@@ -71,11 +71,11 @@ public class CompanyController {
         return ResponseEntity.ok(list);
     }
 
-    // 🔍 Get by shortID
-    @GetMapping("/{shortID}")
-    public ResponseEntity<?> getCompany(@PathVariable String shortID) {
+    // 🔍 Get by shortId
+    @GetMapping("/{shortId}")
+    public ResponseEntity<?> getCompany(@PathVariable String shortId) {
         try {
-            Company company = service.getCompanyById(shortID);
+            Company company = service.getCompanyById(shortId);
             return ResponseEntity.ok(mapToDTO(company));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -84,13 +84,13 @@ public class CompanyController {
     }
 
     // ✏️ Update
-    @PutMapping("/{shortID}")
+    @PutMapping("/{shortId}")
     public ResponseEntity<?> updateCompany(
-            @PathVariable String shortID,
+            @PathVariable String shortId,
             @RequestBody CompanyDTO dto) {
 
         try {
-            Company updated = service.updateCompany(shortID, mapToEntity(dto));
+            Company updated = service.updateCompany(shortId, mapToEntity(dto));
             return ResponseEntity.ok(mapToDTO(updated));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -99,10 +99,10 @@ public class CompanyController {
     }
 
     // ❌ Delete
-    @DeleteMapping("/{shortID}")
-    public ResponseEntity<?> deleteCompany(@PathVariable String shortID) {
+    @DeleteMapping("/{shortId}")
+    public ResponseEntity<?> deleteCompany(@PathVariable String shortId) {
         try {
-            service.deleteCompany(shortID);
+            service.deleteCompany(shortId);
             return ResponseEntity.ok("Company deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)

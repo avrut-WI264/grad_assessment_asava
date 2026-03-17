@@ -23,19 +23,19 @@ public class Company {
     public Company() {
     }
 
-    public Company(String shortID, String name, int noOfShare, double price) {
-        this.shortID = shortID;
+    public Company(String shortId, String name, int noOfShare, double price) {
+        this.shortId = shortId;
         this.name = name;
         this.noOfShare = noOfShare;
         this.price = price;
     }
 
-    public String getShortID() {
-        return shortID;
+    public String getShortId() {
+        return shortId;
     }
 
-    public void setShortID(String shortID) {
-        this.shortID = shortID;
+    public void setShortId(String shortId) {
+        this.shortId = shortId;
     }
 
     public String getName() {
