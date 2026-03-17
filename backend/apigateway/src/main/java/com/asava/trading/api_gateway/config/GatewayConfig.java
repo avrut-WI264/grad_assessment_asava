@@ -11,11 +11,14 @@ public class GatewayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("catalog-service", r -> r
-                        .path("/catalog/**")
-                        .and()
-                        .method("GET")
-                        .uri("http://localhost:8989"))
+                .route("auth-service", r -> r
+                        .path("/auth/**")
+                        .uri("lb://AUTH-SERVICE"))
+
+                .route("customer-service", r -> r
+                        .path("/customer/**")
+                        .uri("lb://CUSTOMER-SERVICE"))
+
                 .build();
     }
 }
