@@ -1,4 +1,4 @@
-package main.java.com.asava.trading.api_gateway.config;
+package com.asava.trading.api_gateway.config;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
