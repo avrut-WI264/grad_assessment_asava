@@ -23,7 +23,6 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
-# Eureka Service Registry
 eureka:
   client:
     service-url:
@@ -35,13 +34,11 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
 
-# JWT Configuration
 jwt:
   secret: ${JWT_SECRET:3f8b9c2d1e4a7f6b0c5d3e8a1f4b7c2d9e6a3f0b7c4d1e8a5f2b9c6d3e0a7f4}
-  expiration: 86400000       # 24 hours in ms
-  refresh-expiration: 604800000  # 7 days in ms
+  expiration: 86400000 
+  refresh-expiration: 604800000 
 
-# Actuator
 management:
   endpoints:
     web:
