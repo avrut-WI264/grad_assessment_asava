@@ -47,3 +47,5 @@ jobs:
             -Dsonar.organization=avrut-wi264
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+        # comment for triggering sonarcloud scan on pull request
