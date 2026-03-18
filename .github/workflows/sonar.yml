@@ -20,10 +20,19 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build Backend
+      - name: Build Backend Services
         run: |
-          cd backend
-          mvn clean install
+          cd backend/apigateway
+          mvn clean install -DskipTests
+
+          cd ../auth-service
+          mvn clean install -DskipTests
+
+          cd ../company-service
+          mvn clean install -DskipTests
+
+          cd ../service-registry
+          mvn clean install -DskipTests
 
       - name: Install Frontend
         run: |
