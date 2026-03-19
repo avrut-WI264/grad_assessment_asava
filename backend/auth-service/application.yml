@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: auth-service
+    name: AUTH-SERVICE
 
   config:
     import: optional:configserver:http://localhost:8888
@@ -20,8 +20,12 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  output:
+    ansi:
+      enabled: always
 
 eureka:
   client:
@@ -35,9 +39,9 @@ eureka:
     lease-expiration-duration-in-seconds: 30
 
 jwt:
-  secret: ${JWT_SECRET:3f8b9c2d1e4a7f6b0c5d3e8a1f4b7c2d9e6a3f0b7c4d1e8a5f2b9c6d3e0a7f4}
-  expiration: 86400000 
-  refresh-expiration: 604800000 
+  secret: ${JWT_SECRET:dGVzdHNlY3JldGtleWZvcnRlc3RpbmdwdXJwb3Nlc29ubHkxMjM0NTY3ODk=}
+  expiration: 86400000
+  refresh-expiration: 604800000
 
 management:
   endpoints:
@@ -50,5 +54,23 @@ management:
 
 logging:
   level:
-    com.tradingportal.authservice: DEBUG
+    com.asava.trading.auth_service: DEBUG
     org.springframework.security: INFO
+  pattern:
+    level: "%5p [corrId=%X{correlationId}]"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      authService:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+
+  retry:
+    instances:
+      authService:
+        maxAttempts: 3
+        waitDuration: 500ms
